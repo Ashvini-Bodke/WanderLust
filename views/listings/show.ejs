@@ -1,0 +1,80 @@
+<% layout("/layouts/boilerplate") %>
+    <script>
+        const mapToken = "<%= process.env.MAP_TOKEN %>";
+        const listing = <%= JSON.stringify(listing) %>;
+    </script>
+    <div class="row mt-3 show-container">
+        <div class="col-sm-8 offset-sm-2 tittle">
+            <h3>
+                <%= listing.title %>
+            </h3>
+        </div>
+        <div class="card col-sm-8 offset-sm-2 show-card listing-card">
+            <div id="listing_image">
+                <img src="<%= listing.image.url %>" class="show-img card-img-top" alt="listing_image">
+            </div>
+            <div class="card-body">
+                <p class="card-text">
+                    <b>Owned by :</b>
+                    <% if (listing.owner) { %>
+                        <i>@<%= listing.owner.username %></i>
+                        <% } else { %>
+                            <i>Unknown</i>
+                            <% } %>
+                </p>
+                <p class="card-text">
+                    <b>Description :</b>
+                    <%= listing.description %>
+                </p>
+                <p class="card-text">
+                    <b>Price :</b>
+                    &#8377; <%= listing.price.toLocaleString("en-IN") %> / night
+                </p>
+                <p class="card-text">
+                    <b>Location :</b>
+                    <%= listing.location %>
+                </p>
+                <p class="card-text">
+                    <b>Country :</b>
+                    <%= listing.country %>
+                </p>
+            </div>
+        </div>
+        <br>
+        <% if (currUser && listing.owner && listing.owner._id.equals(currUser._id)) { %>
+            <div class="btns">
+                <a href="/listings/<%= listing._id %>/edit" class="col-sm-1 offset-sm-2">
+                    <button class="edit-btn">
+                        <svg class="css-i6dzq1" stroke-linejoin="round" stroke-linecap="round" fill="none"
+                            stroke-width="2" stroke="#FFFFFF" height="24" width="24" viewBox="0 0 24 24">
+                            <path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path>
+                        </svg>
+                        Edit
+                    </button>
+                </a>
+                <form action="/listings/<%= listing._id %>?_method=DELETE" method="post">
+                    <div class="del offset-2 offset-sm-7 offset-md-5 offset-lg-4">
+                        <button>Delete</button>
+                    </div>
+                </form>
+            </div>
+            <% } %>
+                <div class="col-sm-8 offset-sm-2 mb-3">
+                    <% if (currUser) { %>
+                        <hr>
+                        <h4>Leave a Review &nbsp;<i class="fa-solid fa-pen-to-square" style="color: #000000;"></i></h4>
+                        <form action="/listings/<%= listing.id %>/reviews" method="post" novalidate
+                            class="needs-validation">
+                            <!-- Review form content -->
+                        </form>
+                        <% } %>
+                            <% if (listing.reviews.length> 0) { %>
+                                <!-- Display reviews -->
+                                <% } %>
+                </div>
+                <hr style="margin: 10px 0px;">
+                <div class="col-sm-8 offset-sm-2 mb-3">
+                    <!-- Map content -->
+                </div>
+    </div>
+    <script src="/js/map.js"></script>
