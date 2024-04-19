@@ -5,7 +5,7 @@ Wanderlust is a travel platform that allows users to explore and share their fav
 
 ## Live Project
 
-Check out the live project: [Wanderlust Live][(https://wanderlust-hub.vercel.app/](https://wanderlust-website-7lst.onrender.com/listings)
+Check out the live project: [Wanderlust Live][(https://wanderlust-hub.vercel.app/)](https://wanderlust-website-7lst.onrender.com/listings)
 
 ## Technologies Used
 
@@ -40,7 +40,7 @@ To run this project locally, follow these steps:
 2. Install dependencies:
 
     ```bash
-    cd Wanderlust
+    cd MAJOR_PROJECT
     npm install
 
 3. Configure environment variables:
@@ -53,7 +53,7 @@ To run this project locally, follow these steps:
     ```bash
     npm start
 
-  Visit http://localhost:3000 in your browser to explore Wanderlust locally.
+  Visit http://localhost:8080 in your browser to explore Wanderlust locally.
 
 ## Contribution
 Feel free to contribute to this project by opening issues or creating pull requests. Your feedback and contributions are highly appreciated!
